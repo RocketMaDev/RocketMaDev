@@ -49,5 +49,5 @@ call plug#end()
 
 
 let g:lightline = { 'colorscheme': 'one', }
-nmap <C-N> :NERDTreeToggle<CR>
+nmap <C-n> :NERDTreeToggle<CR>
 ```
