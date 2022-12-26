@@ -54,3 +54,10 @@ let g:lightline = { 'colorscheme': 'one', }
 set background=dark
 map <C-n> :NERDTreeToggle<CR>
 ```
+
+## An alternative `ln -s` in Git Bash
+
+I've found that using `ln -s` on Git Bash just copy it, not creating a symbolic link.
+Knowing that there is a dos tool named `mklink` bundled with cmd, I wrote a C file to
+implement the operation. It is in this repo, named `mklink.c`.
+
