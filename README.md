@@ -17,9 +17,9 @@ Here are some ideas to get you started:
 
 ## Self introduction
 
-I'm a student from China, interested in `Java` and `C` languages.
+I'm a student from China, interested in `Java`,`C` and `C++` languages. Later I may learn `C#` and `Rust` in my spare time.
 
-And I'm currently playing games including **EXAPUNKS** and **Genshin Impact**.  
+And I'm currently playing games including **Genshin Impact** and**EXAPUNKS** .  
 <img src="https://webstatic.mihoyo.com/upload/static-resource/2021/07/27/7f33b1546290480ea5ea18595cb52cf5_2026295836576284603.jpg" width="25%" title="Klee!">
 
 ## My `.vimrc` Settings
@@ -30,24 +30,27 @@ curl --proxy http://127.0.0.1:7890 -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ```
 
 ```vimrc
+imap jj <Esc>
 set nu
 set expandtab
-set softtabstop=4
 set tabstop=4
 set shiftwidth=4
-set laststatus=2
+set softtabstop=4
+set pythonthreedll=/c/Users/ma201/AppData/Local/Programs/Python/Python310/python310.dll
 set noshowmode
-set background=dark
+set tags+=/d/TDM-GCC/tags
 
-imap jj <Esc>
-
-call plug#begin()
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'itchyny/lightline.vim'
+call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 call plug#end()
 
-
 let g:lightline = { 'colorscheme': 'one', }
-nmap <C-n> :NERDTreeToggle<CR>
+set background=dark
+map <C-n> :NERDTreeToggle<CR>
 ```
