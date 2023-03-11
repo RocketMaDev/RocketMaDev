@@ -48,16 +48,26 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 let g:lightline = { 'colorscheme': 'one', }
 set background=dark
-map <C-n> :NERDTreeToggle<CR>
+map <M-n> :NERDTreeToggle<CR>
+
+set signcolumn=yes
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 ```
 
 ## An alternative `ln -s` in Git Bash
 
-I've found that using `ln -s` on Git Bash just copy it, not creating a symbolic link.
+~~I've found that using `ln -s` on Git Bash just copy it, not creating a symbolic link.
 Knowing that there is a dos tool named `mklink` bundled with cmd, I wrote a C file to
-implement the operation. It is in this repo, named `mklink.c`.
+implement the operation. It is in this repo, named `mklink.c`.~~
 
+Set variable export `MSYS=winsymlinks:nativestrict` to enable `ln`.
