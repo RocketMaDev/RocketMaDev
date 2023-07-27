@@ -36,9 +36,7 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set pythonthreedll=/c/Users/ma201/AppData/Local/Programs/Python/Python310/python310.dll
 set noshowmode
-set tags+=/d/TDM-GCC/tags
 
 call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'
