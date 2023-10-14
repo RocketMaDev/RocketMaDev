@@ -37,6 +37,10 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set noshowmode
+set hidden
+set wildmenu
+set wildmode=full
+set showcmd
 
 call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'
@@ -47,11 +51,20 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 call plug#end()
 
 let g:lightline = { 'colorscheme': 'one', }
+set laststatus=2
 set background=dark
-map <M-n> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
+nmap <C-m> <Plug>MarkdownPreviewToggle
+let g:vim_markdown_folding_disabled = 1
+let g:mkdp_auto_close = 0
+let g:mkdp_auto_start = 1
+let g:mkdp_combine_preview = 1
 
 set signcolumn=yes
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
