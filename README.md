@@ -127,7 +127,6 @@ export https_proxy=http://127.0.0.1:20172
 alias vi=vim
 alias ll="ls -hls --color=auto"
 alias ls="ls --color=auto"
-alias cheat="curl cheat.sh/"
 alias nc=ncat
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -140,6 +139,11 @@ compinit
 export PATH="$PATH:/home/Rocket/.local/bin"
 
 bindkey -s '\ez' 'cd ..\n'
+
+cheat() {
+    curl "cheat.sh/$1"
+}
+
 0x() {
     echo $((16#$1))
 }
