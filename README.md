@@ -1,18 +1,3 @@
-<!--
-**RocketMaDev/RocketMaDev** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
-
 # RocketDev Here!
 
 ## Self introduction
@@ -22,7 +7,8 @@ I'm a student from China, interested in `Java`,`C` and `C++` languages. Later I 
 And I'm currently playing games including **Genshin Impact**, **Midnight Protocol** and **EXAPUNKS**.  
 <img src="https://webstatic.mihoyo.com/upload/static-resource/2021/07/27/7f33b1546290480ea5ea18595cb52cf5_2026295836576284603.jpg" width="25%" title="Klee!">
 
-Now I major in **Information Security**, and play ctf games as a pwner.
+Now I major in **Information Security**, and play ctf games as a pwner. My writeups are stored [here](https://github.com/RocketMaDev/CTFWriteup).
+If that helps you, plz give me a star! :)
 
 Using Arch Linux.
 
