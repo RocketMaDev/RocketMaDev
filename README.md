@@ -21,7 +21,7 @@ curl --proxy http://127.0.0.1:7890 -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 ```vim
 imap jj <Esc>
-noremap ' $
+noremap K $
 nnoremap gs :set spell!<CR>
 
 set wildignorecase
@@ -53,8 +53,12 @@ Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'skywind3000/asyncrun.vim'
-Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-indent'
+Plug 'pocke/vim-textobj-markdown'
+Plug 'cposture/vim-textobj-argument'
+Plug 'lilydjwg/fcitx.vim'
 call plug#end()
 
 let g:lightline = { 'colorscheme': 'one', }
@@ -70,14 +74,6 @@ nmap <silent> gd <Plug>(coc-definition)
 
 inoremap <silent><expr> <Tab> pumvisible() ? coc#_select_confirm() : "\<Tab>"
 autocmd FileType python noremap <F8> :AsyncRun -raw -cwd=$(VIM_FILEDIR) python "$(VIM_FILEPATH)" <CR>
-
-autocmd FileType markdown nmap cic :?^```?+1,/^```/-1d<CR>O
-autocmd FileType markdown nmap dic :?^```?+1,/^```/-1d<CR>
-autocmd FileType markdown nmap <silent> yic :?^```?+1,/^```/-1 "<CR>
-
-autocmd FileType markdown nmap cac :?^```?,/^```/d<CR>i
-autocmd FileType markdown nmap dac :?^```?,/^```/d<CR>
-autocmd FileType markdown nmap <silent> yac :?^```?,/^```/ "<CR>
 
 autocmd BufWinLeave ?* mkview
 autocmd BufWinEnter ?* silent loadview
