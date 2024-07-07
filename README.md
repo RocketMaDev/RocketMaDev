@@ -33,9 +33,12 @@ curl --proxy http://127.0.0.1:7890 -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-```vimrc
+```vim
 imap jj <Esc>
-set nu
+noremap ' $
+nnoremap gs :set spell!<CR>
+
+set wildignorecase
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -46,6 +49,9 @@ set wildmenu
 set wildmode=longest:full,full
 set showcmd
 set incsearch
+set relativenumber
+set tildeop
+set signcolumn=yes
 
 call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'
@@ -61,6 +67,8 @@ Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'skywind3000/asyncrun.vim'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-user'
 call plug#end()
 
 let g:lightline = { 'colorscheme': 'one', }
@@ -72,18 +80,18 @@ let g:vim_markdown_folding_disabled = 1
 let g:mkdp_auto_close = 0
 let g:mkdp_combine_preview = 1
 
-set signcolumn=yes
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 
 inoremap <silent><expr> <Tab> pumvisible() ? coc#_select_confirm() : "\<Tab>"
-autocmd FileType c,cpp noremap <F6> :AsyncRun gcc -Wextra -Wall "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <CR>
-autocmd FileType c,cpp noremap <F8> :AsyncRun "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <CR>
 autocmd FileType python noremap <F8> :AsyncRun -raw -cwd=$(VIM_FILEDIR) python "$(VIM_FILEPATH)" <CR>
+
+autocmd FileType markdown nmap cic :?^```?+1,/^```/-1d<CR>O
+autocmd FileType markdown nmap dic :?^```?+1,/^```/-1d<CR>
+autocmd FileType markdown nmap <silent> yic :?^```?+1,/^```/-1 "<CR>
+
+autocmd FileType markdown nmap cac :?^```?,/^```/d<CR>i
+autocmd FileType markdown nmap dac :?^```?,/^```/d<CR>
+autocmd FileType markdown nmap <silent> yac :?^```?,/^```/ "<CR>
 
 autocmd BufWinLeave ?* mkview
 autocmd BufWinEnter ?* silent loadview
@@ -135,10 +143,14 @@ compinit
 # End of lines added by compinstall
 
 
-# Created by `pipx` on 2024-02-23 11:49:32
-export PATH="$PATH:/home/Rocket/.local/bin"
+[[ ! $PATH == *"/home/Rocket/.local/bin"* ]] && export PATH="$PATH:/home/Rocket/.local/bin"
 
 bindkey -s '\ez' 'cd ..\n'
+
+update_patchelf() {
+    sudo curl -o /usr/share/zsh/site-functions/_patchelf "https://raw.githubusercontent.com/RocketMaDev/patchelf/master/completions/zsh/_patchelf"
+    unfunction _patchelf && autoload -U _patchelf
+}
 
 cheat() {
     curl "cheat.sh/$1"
@@ -167,6 +179,7 @@ p8() {
 p2() {
     echo $(([#2] $1))
 }
+
 ```
 
 ## My `.tmux.conf` Configuration
@@ -196,7 +209,8 @@ set -g status-style "bg=#32353b,fg=#08b472"
 set -g pane-active-border-style "fg=#08b472"
 set -g pane-border-style "fg=#32353b"
 setw -g window-status-current-style "fg=black,bg=#08b472"
-set -g status-right "#{=20:pane_title} #([ $(cat /sys/class/power_supply/ACAD/online) = 1 ] && echo +)#(cat /sys/class/power_supply/BAT1/capacity)%"
+set -g status-right "#{=54:pane_title} #(showtemp)C #([ $(cat /sys/class/power_supply/ACAD/online) = 1 ] && echo +)#(cat /sys/class/power_supply/BAT1/capacity)%"
+set -g status-right-length 64
 set -g base-index 1
 setw -g pane-base-index 1
 
@@ -208,7 +222,7 @@ set -g set-titles on
 set -g display-panes-time 2000
 set -g display-time 2000
 
-set -g status-interval 1
+set -g status-interval 3
 
 set -g default-terminal "tmux-256color"
 # Window Management
