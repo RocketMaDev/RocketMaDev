@@ -22,8 +22,10 @@ curl --proxy http://127.0.0.1:7890 -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ```vim
 imap jj <Esc>
 noremap K $
+noremap Y y$
 nnoremap gs :set spell!<CR>
 
+set nu
 set wildignorecase
 set expandtab
 set tabstop=4
