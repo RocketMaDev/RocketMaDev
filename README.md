@@ -12,6 +12,8 @@ If that helps you, plz give me a star! :)
 
 Using Arch Linux.
 
+Visit my blog! https://rocketmadev.github.io
+
 ## My `.vimrc` Configuration
 
 ```bash
