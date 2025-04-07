@@ -284,6 +284,10 @@ set -g mode-keys vi
 bind -n M-v copy-mode
 ```
 
+## My neovim configuration
+
+[NeoVim Config](.config/nvim)
+
 ## An alternative `ln -s` in Git Bash
 
 ~~I've found that using `ln -s` on Git Bash just copy it, not creating a symbolic link.
