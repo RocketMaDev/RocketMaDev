@@ -38,13 +38,20 @@ vim.opt.mouse = "n"
 
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
--- Define :SudoW command to save the file using pkexec and force reload
-vim.api.nvim_create_user_command('SudoW', function()
+-- Define :WW command to save the file using pkexec and force reload
+vim.api.nvim_create_user_command('WW', function()
     vim.cmd('silent! w !pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY tee % >/dev/null') -- Save file using pkexec
     vim.cmd('edit!')  -- Force reload the file
 end, {})
 
 -- Map 'w!!' to save the file using pkexec
-vim.api.nvim_set_keymap('c', 'w!!', "<esc>:SudoW<CR>", { silent = true, noremap = true })
+-- vim.keymap.set('c', 'w!!<CR>', "<esc>:SudoW<CR>", { silent = true, noremap = true })
+
+-- clear trailing duplicated newlines
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    command = "%s/\\v\\n+%$//ge"
+})
 
 require("config.lazy")
+vim.cmd("colorscheme onedark")

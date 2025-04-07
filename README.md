@@ -98,6 +98,7 @@ inoremap <silent><expr> <Tab> pumvisible() ? coc#_select_confirm() : "\<Tab>"
 
 autocmd BufWinLeave ?* mkview
 autocmd BufWinEnter ?* silent loadview
+autocmd BufWritePre ?* %s/\v\n+%$//ge
 ```
 
 ## My `.zshrc` Configuration
