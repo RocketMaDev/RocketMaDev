@@ -48,10 +48,17 @@ return {
         -- jdtls => jdtls
         -- jsonls => vscode-json-language-server
         -- jedi_language_server => jedi-language-server
+        -- lspconf.jedi_language_server.setup(defcap)
         lspconf.pylsp.setup(defcap)
-        lspconf.ruff.setup(defcap)
+        -- lspconf.ruff.setup(defcap)
         -- pkgbuild_language_server => termux-language-server
         -- rust_analyzer => rust-analyzer
         -- yamlls => yaml-language-server
+
+        local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+        cmp.event:on(
+            'confirm_done',
+            cmp_autopairs.on_confirm_done()
+        )
     end,
 }

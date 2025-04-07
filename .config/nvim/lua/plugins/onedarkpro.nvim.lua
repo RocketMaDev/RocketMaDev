@@ -6,5 +6,5 @@ return {
             white = "#e8e8e8",
             fg = "#e8e8e8",
         }
-    }
+    },
 }
