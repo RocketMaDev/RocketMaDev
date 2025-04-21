@@ -1,0 +1,8 @@
+target-version = "py311"
+
+[lint]
+select = ["B", "A", "COM", "C4", "FIX", "G", "PIE", "RSE", "RET", "SIM", "ARG", "PTH", "PERF", "E2", "E3", "E4", "E5", "E70", "E71", "E721", "W", "UP", "FURB", "TRY", "RUF"]
+ignore = ["B011", "RET503", "F403", "F405", "E731", "F406", "TRY0", "RUF001"]
+
+[format]
+quote-style = "single"
