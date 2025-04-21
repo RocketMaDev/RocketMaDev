@@ -9,8 +9,6 @@ return {
                         enable = true,
                         lookahead = true,
                         keymaps = {
-                            ["aa"] = "@parameter.outer",
-                            ["ia"] = "@parameter.inner",
                             ["af"] = "@function.outer",
                             ["if"] = "@function.inner",
                         },

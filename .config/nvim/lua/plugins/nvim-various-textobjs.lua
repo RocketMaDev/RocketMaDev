@@ -1,45 +1,47 @@
-function asfunc()
-    require("various-textobjs").subword("outer")
+local function asfunc()
+	require("various-textobjs").subword("outer")
 end
-function isfunc()
-    require("various-textobjs").subword("inner")
+local function isfunc()
+	require("various-textobjs").subword("inner")
 end
-function aifunc()
-    require("various-textobjs").indentation("outer", "inner")
+local function aifunc()
+	require("various-textobjs").indentation("outer", "inner")
 end
-function iifunc()
-    require("various-textobjs").indentation("inner", "inner")
+local function iifunc()
+	require("various-textobjs").indentation("inner", "inner")
 end
-function aefunc()
-    require("various-textobjs").entireBuffer()
+local function aefunc()
+	require("various-textobjs").entireBuffer()
 end
-function acfunc()
-    local textobj = require("various-textobjs")
-    if vim.bo.filetype == "markdown" then
-        textobj.mdFencedCodeBlock("outer")
-    else
-        textobj.pyTripleQuotes("outer")
-    end
+local function infunc()
+	require("various-textobjs").nearEoL()
 end
-function icfunc()
-    local textobj = require("various-textobjs")
-    if vim.bo.filetype == "markdown" then
-        textobj.mdFencedCodeBlock("inner")
-    else
-        textobj.pyTripleQuotes("inner")
-    end
+local function acfunc()
+	if vim.bo.filetype == "markdown" then
+		require("various-textobjs").mdFencedCodeBlock("outer")
+	else
+		require("various-textobjs").pyTripleQuotes("outer")
+	end
+end
+local function icfunc()
+	if vim.bo.filetype == "markdown" then
+		require("various-textobjs").mdFencedCodeBlock("inner")
+	else
+		require("various-textobjs").pyTripleQuotes("inner")
+	end
 end
 
 return {
-    "chrisgrieser/nvim-various-textobjs",
-    event = "VeryLazy",
-    keys = {
-        {"aS", asfunc, mode = {"o", "x"}},
-        {"iS", isfunc, mode = {"o", "x"}},
-        {"ai", aifunc, mode = {"o", "x"}},
-        {"ii", iifunc, mode = {"o", "x"}},
-        {"ae", aefunc, mode = {"o", "x"}},
-        {"ac", acfunc, mode = {"o", "x"}},
-        {"ic", icfunc, mode = {"o", "x"}},
-    }
+	"chrisgrieser/nvim-various-textobjs",
+	event = "VeryLazy",
+	keys = {
+		{ "aS", asfunc, mode = { "o", "x" }, desc = "subword outer" },
+		{ "iS", isfunc, mode = { "o", "x" }, desc = "subword inner" },
+		{ "ai", aifunc, mode = { "o", "x" }, desc = "indentation outer" },
+		{ "ii", iifunc, mode = { "o", "x" }, desc = "indentation inner" },
+		{ "ae", aefunc, mode = { "o", "x" }, desc = "entire buffer" },
+		{ "in", infunc, mode = { "o", "x" }, desc = "near eol" },
+		{ "ac", acfunc, mode = { "o", "x" }, desc = "triple quotes/fenced code outer" },
+		{ "ic", icfunc, mode = { "o", "x" }, desc = "triple quotes/fenced code inner" },
+	},
 }

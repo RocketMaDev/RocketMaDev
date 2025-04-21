@@ -6,7 +6,7 @@ return {
         keys = {
             { "<leader>r", function()
                 require("render-markdown").buf_toggle()
-            end },
+            end , desc = "toggle render-markdown" },
         },
     }
 }
